@@ -17,3 +17,6 @@ python mesh_reconstruction/train.py -eid singleclass_04256520 -cls 04256520 -ls 
 python mesh_reconstruction/train.py -eid singleclass_04379243 -cls 04379243 -ls 0.001 -li 1000 -ni 90000
 python mesh_reconstruction/train.py -eid singleclass_04401088 -cls 04401088 -ls 0.001 -li 1000 -ni 30000
 python mesh_reconstruction/train.py -eid singleclass_04530566 -cls 04530566 -ls 0.001 -li 1000 -ni 90000
+
+
+python mesh_reconstruction/train.py -eid test -cls 02691156 -ls 0.001 -li 1000 -ni 200000

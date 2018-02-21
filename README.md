@@ -1,4 +1,4 @@
-# Single-Image 3D Mesh Reconstruction using Neural Renderer
+# Single-Image 3D Reconstruction using Neural Renderer
 
 This is the code for 3D reconstruction in the paper [Neural 3D Mesh Renderer (CVPR 2018) ](http://hiroharu-kato.com/projects_en/neural_renderer.html) by Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada.
 
@@ -44,8 +44,8 @@ python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_0300
 #### Output
 <div>
     <img src="https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/airplane_out.png" width="30%" height="30%">
-    <img src="https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/car.png" width="30%" height="30%">
-    <img src="https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/chair.png" width="30%" height="30%">
+    <img src="https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/car_out.png" width="30%" height="30%">
+    <img src="https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/chair_out.png" width="30%" height="30%">
 </div>
 
 

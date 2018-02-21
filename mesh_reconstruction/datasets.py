@@ -21,9 +21,9 @@ class ShapeNet(object):
         loop.set_description('Loading dataset')
         for class_id in loop:
             images.append(np.load(
-                os.path.join(directory, 'dataset', '%s_%s_images.npz' % (class_id, set_name))).items()[0][1])
+                os.path.join(directory, '%s_%s_images.npz' % (class_id, set_name))).items()[0][1])
             voxels.append(np.load(
-                os.path.join(directory, 'dataset', '%s_%s_voxels.npz' % (class_id, set_name))).items()[0][1])
+                os.path.join(directory, '%s_%s_voxels.npz' % (class_id, set_name))).items()[0][1])
             self.num_data[class_id] = images[-1].shape[0]
             self.pos[class_id] = count
             count += self.num_data[class_id]
