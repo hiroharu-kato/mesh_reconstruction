@@ -1,0 +1,6 @@
+.idea*
+*~
+*.pyc
+.DS_Store
+*.npz
+./data/models
