@@ -25,6 +25,7 @@ First, you need download pre-trained models.
 bash download_models.sh
 ```
 
+### Reconstruct shapes
 You can reconstruct a 3D model (*.obj) and multi-view images by the following commands.
 ```bash
 python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_02691156 -i ./data/examples/airplane_in.png -oi ./data/examples/airplane_out.png
@@ -32,6 +33,23 @@ python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_0295
 python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_03001627 -i ./data/examples/chair_in.png -oi ./data/examples/chair_out.png
 ```
 
+#### Input
+<div>
+   <img src=https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/airplane_in.png width="30%" height="30%">
+   <img src=https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/car_in.png width="30%" height="30%">
+   <img src=https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/chair_in.png width="30%" height="30%">
+</div>
+
+
+#### Output
+<div>
+    <img src="https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/airplane_out.png" width="30%" height="30%">
+    <img src="https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/car.png" width="30%" height="30%">
+    <img src="https://raw.githubusercontent.com/hiroharu-kato/mesh_reconstruction/master/data/examples/chair.png" width="30%" height="30%">
+</div>
+
+
+### Evaluate voxel IoU
 You can evaluate voxel IoU of a model on test set by the following command.
 ```bash
 python mesh_reconstruction/test.py -d ./data/models -eid multiclass
