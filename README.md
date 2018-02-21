@@ -28,9 +28,9 @@ bash download_models.sh
 ### Reconstruct shapes
 You can reconstruct a 3D model (*.obj) and multi-view images by the following commands.
 ```bash
-python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_02691156 -i ./data/examples/airplane_in.png -oi ./data/examples/airplane_out.png
-python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_02958343 -i ./data/examples/car_in.png -oi ./data/examples/car_out.png
-python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_03001627 -i ./data/examples/chair_in.png -oi ./data/examples/chair_out.png
+python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_02691156 -i ./data/examples/airplane_in.png -oi ./data/examples/airplane_out.png -oo ./data/examples/airplane_out.obj
+python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_02958343 -i ./data/examples/car_in.png -oi ./data/examples/car_out.png -oo ./data/examples/car_out.obj
+python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_03001627 -i ./data/examples/chair_in.png -oi ./data/examples/chair_out.png -oo ./data/examples/chair_out.obj
 ```
 
 #### Input

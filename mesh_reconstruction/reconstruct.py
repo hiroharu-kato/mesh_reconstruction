@@ -37,6 +37,7 @@ def run():
     parser.add_argument('-d', '--directory', type=str, default=DIRECTORY)
     parser.add_argument('-i', '--input_image', type=str)
     parser.add_argument('-oi', '--output_image', type=str)
+    parser.add_argument('-oo', '--output_obj', type=str)
     parser.add_argument('-s', '--seed', type=int, default=RANDOM_SEED)
     parser.add_argument('-g', '--gpu', type=int, default=GPU)
     args = parser.parse_args()
@@ -62,6 +63,7 @@ def run():
 
     # reconstruct .obj
     vertices, faces = model.reconstruct(images_in)
+    neural_renderer.save_obj(args.output_obj, vertices.data.get()[0], faces.get()[0])
 
     # render reconstructed shape
     ones = chainer.cuda.to_gpu(np.ones((16,), 'float32'))
