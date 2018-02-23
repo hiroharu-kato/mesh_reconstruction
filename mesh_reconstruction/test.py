@@ -31,18 +31,21 @@ CLASS_NAMES = {
 RANDOM_SEED = 0
 GPU = 0
 DIRECTORY = './data/models'
+MODEL_DIRECTORY = './data/models'
+DATASET_DIRECTORY = './data/dataset'
 
 
 def run():
     # arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('-eid', '--experiment_id', type=str)
-    parser.add_argument('-d', '--directory', type=str, default=DIRECTORY)
+    parser.add_argument('-d', '--model_directory', type=str, default=MODEL_DIRECTORY)
+    parser.add_argument('-dd', '--dataset_directory', type=str, default=DATASET_DIRECTORY)
     parser.add_argument('-cls', '--class_ids', type=str, default=CLASS_IDS_ALL)
     parser.add_argument('-s', '--seed', type=int, default=RANDOM_SEED)
     parser.add_argument('-g', '--gpu', type=int, default=GPU)
     args = parser.parse_args()
-    directory_output = os.path.join(args.directory, args.experiment_id)
+    directory_output = os.path.join(args.model_directory, args.experiment_id)
 
     # set random seed, gpu
     random.seed(args.seed)
@@ -51,7 +54,7 @@ def run():
     chainer.cuda.get_device(args.gpu).use()
 
     # load dataset
-    dataset_test = datasets.ShapeNet(class_ids=args.class_ids.split(','), set_name='test')
+    dataset_test = datasets.ShapeNet(args.dataset_directory, args.class_ids.split(','), 'test')
 
     # setup model & optimizer
     model = models.Model()

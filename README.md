@@ -25,7 +25,7 @@ First, you need download pre-trained models.
 bash download_models.sh
 ```
 
-### Reconstruct shapes
+### Reconstructing shapes
 You can reconstruct a 3D model (*.obj) and multi-view images by the following commands.
 ```bash
 python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_02691156 -i ./data/examples/airplane_in.png -oi ./data/examples/airplane_out.png -oo ./data/examples/airplane_out.obj
@@ -49,13 +49,15 @@ python mesh_reconstruction/reconstruct.py -d ./data/models -eid singleclass_0300
 </div>
 
 
-### Evaluate voxel IoU
+### Evaluating voxel IoU
 You can evaluate voxel IoU of a model on test set by the following command.
 ```bash
 python mesh_reconstruction/test.py -d ./data/models -eid multiclass
 ```
 
-## Training models
+Mean IoU of pre-trained model is 0.5988, which is slightly different from that in the paper (0.6031). This is mainly because of random initialization of networks.
+
+## Training
 First, you need download datasets rendered using ShapeNet dataset.
 ```bash
 bash download_dataset.sh
