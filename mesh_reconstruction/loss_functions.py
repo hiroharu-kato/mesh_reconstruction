@@ -45,13 +45,22 @@ def smoothness_loss(vertices, parameters, eps=1e-6):
     v0s, v1s, v2s, v3s = parameters
     batch_size = vertices.shape[0]
 
+    # compute angle of two adjacent triangles
+    # notations are illustrated in https://github.com/hiroharu-kato/mesh_reconstruction/blob/master/data/misc/smooth_loss.png
+    # This code computes the angle using vectors c1->b1 and c2->b2
+
+    # get a1 and b2
+    # * triangle A: [v0, v1, v2]
+    # * triangle B: [v0, v1, v3]
+    # v0s.shape == [batch size, num of triangle pairs, 3(xyz)].
     v0s = vertices[:, v0s, :]
     v1s = vertices[:, v1s, :]
     v2s = vertices[:, v2s, :]
     v3s = vertices[:, v3s, :]
-
     a1 = v1s - v0s
     b1 = v2s - v0s
+
+    # compute dot and cos of a1 and b1
     a1l2 = cf.sum(cf.square(a1), axis=-1)
     b1l2 = cf.sum(cf.square(b1), axis=-1)
     a1l1 = cf.sqrt(a1l2 + eps)
@@ -59,10 +68,15 @@ def smoothness_loss(vertices, parameters, eps=1e-6):
     ab1 = cf.sum(a1 * b1, axis=-1)
     cos1 = ab1 / (a1l1 * b1l1 + eps)
     sin1 = cf.sqrt(1 - cf.square(cos1) + eps)
+
+    # c1 = (a1/|a1|) * (|b1|*cos) = a1 * dot(a1, b1) / |a1|^2
     c1 = a1 * cf.broadcast_to((ab1 / (a1l2 + eps))[:, :, None], a1.shape)
+
+    # vector of c1->b1, and its length
     cb1 = b1 - c1
     cb1l1 = b1l1 * sin1
 
+    # same computation for triangle B
     a2 = v1s - v0s
     b2 = v3s - v0s
     a2l2 = cf.sum(cf.square(a2), axis=-1)
@@ -76,6 +90,7 @@ def smoothness_loss(vertices, parameters, eps=1e-6):
     cb2 = b2 - c2
     cb2l1 = b2l1 * sin2
 
+    # cos of c1b1 and c2b2
     cos = cf.sum(cb1 * cb2, axis=-1) / (cb1l1 * cb2l1 + eps)
 
     loss = cf.sum(cf.square(cos + 1)) / batch_size
