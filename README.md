@@ -62,8 +62,9 @@ First, you need download datasets rendered using ShapeNet dataset.
 ```bash
 bash download_dataset.sh
 ```
+This dataset is created by `render.py` using Blender.
 
-You can train models by the following command. 
+You can train models by the following command.
 ```bash
 bash train.sh
 ```
